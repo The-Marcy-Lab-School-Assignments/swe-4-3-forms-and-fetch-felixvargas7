@@ -5,7 +5,7 @@
 The following code logs `undefined` in the second `.then()`. Identify the bug and fix it.
 
 ```js
-fetch('https://pokeapi.co/api/v2/pokemon/pikachu')
+fetch("https://pokeapi.co/api/v2/pokemon/pikachu")
   .then((response) => {
     if (!response.ok) throw Error(`Fetch failed.`);
     const readingPromise = response.json();
@@ -17,14 +17,13 @@ fetch('https://pokeapi.co/api/v2/pokemon/pikachu')
 ```
 
 **Your Answer:**
-
+I am working on it today.
 
 ## Question 2: Development Servers and CORS
 
 A student opens their `index.html` file directly in the browser (using the `file://` protocol). Their `<script type="module">` tag and `fetch()` call both fail. Explain why, and what they should do instead.
 
 **Your Answer:**
-
 
 ## Question 3: The `fetch` Response Object
 
@@ -37,15 +36,13 @@ const data = await response.json();
 
 **Your Answer:**
 
-
-
 ## Question 4: Async/Await Conversion
 
 Rewrite the following `.then()`-based code using `async`/`await` with `try`/`catch`:
 
 ```js
 const getJoke = () => {
-  return fetch('https://v2.jokeapi.dev/joke/Programming?type=twopart')
+  return fetch("https://v2.jokeapi.dev/joke/Programming?type=twopart")
     .then((response) => {
       if (!response.ok) throw Error(`Fetch failed. ${response.status}`);
       return response.json();
@@ -61,24 +58,20 @@ const getJoke = () => {
 
 **Your Answer:**
 
-
-
 ## Question 5: `event.preventDefault()` and Form Handling
 
 A student writes a form handler but the data never displays. Their code:
 
 ```js
-form.addEventListener('submit', (event) => {
+form.addEventListener("submit", (event) => {
   const name = form.elements.name.value;
-  document.querySelector('#output').textContent = name;
+  document.querySelector("#output").textContent = name;
 });
 ```
 
 What is wrong? What happens when they click submit, and how do they fix it?
 
 **Your Answer:**
-
-
 
 ## Question 6: Putting It All Together
 
@@ -96,4 +89,3 @@ The steps below describe how to build a form that fetches Pokemon data from `htt
 - J. Create the HTML form with a name input and output elements for displaying results
 
 **Your Answer:**
-
