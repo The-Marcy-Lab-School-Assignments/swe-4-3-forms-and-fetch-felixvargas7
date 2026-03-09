@@ -1,24 +1,42 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+import { renderPokemon, renderError, renderSuccess } from "./dom-helpers";
+import { getRandomPokemon, postDiscoveredPokemon } from "./fetch-helpers";
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+const discoverButton = document.querySelector("#discover-button");
+const captureForm = document.querySelector("#capture-form");
 
-setupCounter(document.querySelector('#counter'))
+const getAndRenderPokemon = async () => {
+  const { data, error } = await getRandomPokemon();
+  if (error) {
+    renderError(error.message);
+    renderSuccess("");
+  } else {
+    renderPokemon(data);
+    renderSuccess(`${data.name} was discovered`);
+    renderError("");
+  }
+};
+
+const handleCaptureSubmit = async (event) => {
+  event.preventDefault();
+
+  const form = event.target;
+  const formValues = {
+    name: form.elements.name.value,
+    types: form.elements.types.value,
+    isFavorite: form.elements.isFavorite.checked,
+  };
+
+  const { data, error } = await postDiscoveredPokemon(formValues);
+
+  if (error) {
+    renderError("Error: unable to capture Pokemon. Please try again later");
+    renderSuccess("");
+  } else {
+    renderSuccess(`${formValues.name} has been captured!`);
+    renderError("");
+    form.reset();
+  }
+};
+getAndRenderPokemon();
+discoverButton.addEventListener("click", getAndRenderPokemon);
+captureForm.addEventListener("submit", handleCaptureSubmit);
