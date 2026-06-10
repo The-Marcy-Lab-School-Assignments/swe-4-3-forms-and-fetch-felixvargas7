@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form id="capture-form">
+      <h2>Capture Pokemon</h2>
+    
+    <div>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" autocomplete="off"/>
+    </div>
+    <div>
+      <label for="types">Types</label>
+      <input type="text" id="types" name="types" autocomplete="off"/>
+    </div>
+    <div>
+      <label for="isFavorite">Favorite?</label>
+      <input type="checkbox" id="isFavorite" name="isFavorite" autocomplete="off"/>
+    </div>
+
+    <button type="submit">Capture Pokemon</button>
+  </form>
+  <p id="error"> </p>
+  <p id="success"></p>
+  
+  <button id="discover-button">Find New Pokemon</button>
+  <ul id="discovered-list">Discovered Pokemon</ul>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
