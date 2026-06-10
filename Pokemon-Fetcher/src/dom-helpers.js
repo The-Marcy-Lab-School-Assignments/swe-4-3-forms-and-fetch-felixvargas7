@@ -10,7 +10,7 @@ export const renderPokemon = (pokemonObj) => {
 
   name.textContent =
     pokemonObj.name.charAt(0).toUpperCase() + pokemonObj.name.slice(1);
-  types.textContent = pokemonObj.types.join(", ");
+  types.textContent = pokemonObj.types;
   sprite.src = pokemonObj.sprite;
   sprite.alt = pokemonObj.name;
 

@@ -11,7 +11,7 @@ const getAndRenderPokemon = async () => {
     renderSuccess("");
   } else {
     renderPokemon(data);
-    renderSuccess(`${data.name} was discovered`);
+    renderSuccess(`${data.name} was discovered!`);
     renderError("");
   }
 };

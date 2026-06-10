@@ -8,7 +8,7 @@ export const getRandomPokemon = async () => {
     const data = await response.json();
     const pokemonObj = {
       name: data.name,
-      types: data.types.map((typeObj) => typeObj.type.name),
+      types: data.types.map((typeObj) => typeObj.type.name).join(", "),
       sprite: data.sprites.front_default,
     };
     return { data: pokemonObj, error: null };
